@@ -1,0 +1,2332 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin - CTV GIA KHÁNH</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f8fc;
+  color:#0b1736;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+/* ================= HEADER ================= */
+
+.nav{
+  height:72px;
+  background:#fff;
+  border-bottom:1px solid #e9ebf2;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 5%;
+
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:55px;
+  height:55px;
+  border-radius:13px;
+
+  overflow:hidden;
+
+  background:#e8faf5;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.logo-fallback{
+  font-size:20px;
+  font-weight:900;
+  color:#00a88b;
+}
+
+.brand-text b{
+  display:block;
+  font-size:17px;
+}
+
+.brand-text span{
+  font-size:12px;
+  color:#00a88b;
+  font-weight:700;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.badge{
+  padding:9px 14px;
+  border-radius:999px;
+
+  background:#e9faf5;
+  color:#00a88b;
+
+  font-weight:800;
+  font-size:13px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.page{
+  padding:35px 0 60px;
+}
+
+h1{
+  font-size:38px;
+  margin:0 0 8px;
+}
+
+.sub{
+  color:#667085;
+  margin:0 0 28px;
+  line-height:1.6;
+}
+
+/* ================= THỐNG KÊ ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+
+  margin-bottom:28px;
+}
+
+.card{
+  background:#fff;
+
+  border:1px solid #e5e7ef;
+  border-radius:22px;
+
+  padding:22px;
+
+  box-shadow:0 10px 30px rgba(20,30,60,.05);
+}
+
+.stat-label{
+  color:#667085;
+  font-size:13px;
+  margin-bottom:9px;
+}
+
+.stat-value{
+  font-size:28px;
+  font-weight:900;
+}
+
+.green{
+  color:#00a88b;
+}
+
+.purple{
+  color:#00a88b;
+}
+
+.yellow{
+  color:#d99a00;
+}
+
+/* ================= LAYOUT ================= */
+
+.layout{
+  display:grid;
+
+  grid-template-columns:380px 1fr;
+
+  gap:22px;
+
+  align-items:start;
+}
+
+.panel{
+  background:#fff;
+
+  border:1px solid #e5e7ef;
+
+  border-radius:24px;
+
+  padding:25px;
+
+  box-shadow:0 10px 30px rgba(20,30,60,.05);
+}
+
+.panel h2{
+  font-size:22px;
+  margin:0 0 20px;
+}
+
+/* ================= INPUT ================= */
+
+label{
+  display:block;
+
+  font-weight:700;
+  font-size:14px;
+
+  margin:14px 0 7px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+
+  padding:12px 14px;
+
+  border:1px solid #dfe3ec;
+
+  border-radius:13px;
+
+  outline:none;
+
+  background:#fff;
+
+  color:#0b1736;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#00a88b;
+}
+
+textarea{
+  resize:vertical;
+  min-height:90px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+  border:0 !important;
+  outline:none !important;
+
+  border-radius:13px;
+
+  padding:12px 17px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:.15s;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.btn:focus,
+.btn:active{
+  outline:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+.primary{
+  background:#00a88b;
+  color:#fff;
+
+  border:0 !important;
+}
+
+.primary:hover{
+  background:#008f78;
+}
+
+.gray{
+  background:#eef0f5;
+  color:#344054;
+}
+
+.danger{
+  background:#fff0f0;
+  color:#d92d20;
+}
+
+.actions{
+  display:flex;
+
+  gap:9px;
+
+  margin-top:18px;
+
+  flex-wrap:wrap;
+}
+
+/* ================= Ô TẢI ẢNH ================= */
+
+.image-upload-box{
+
+  width:100%;
+
+  margin-top:5px;
+
+  padding:10px;
+
+  border:0;
+
+  border-radius:20px;
+
+  background:#f5fbf9;
+}
+
+/* Ẩn input file mặc định */
+
+.image-upload-box input[type=file]{
+  display:none;
+}
+
+/* Ô tải ảnh lớn */
+
+.image-upload-label{
+
+  width:100%;
+
+  min-height:270px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:15px;
+
+  border:2px dashed #00a88b;
+
+  border-radius:18px;
+
+  background:#e8faf5;
+
+  color:#008f78;
+
+  font-size:18px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  text-align:center;
+
+  transition:.2s;
+}
+
+.image-upload-label:hover{
+
+  background:#d9f5ee;
+
+  border-color:#008f78;
+
+  transform:translateY(-2px);
+}
+
+/* Icon */
+
+.image-upload-icon{
+
+  width:78px;
+
+  height:78px;
+
+  border-radius:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:#00a88b;
+
+  color:white;
+
+  font-size:42px;
+
+  box-shadow:0 8px 20px rgba(0,168,139,.20);
+}
+
+.image-upload-text{
+
+  font-size:19px;
+}
+
+.image-upload-text small{
+
+  display:block;
+
+  margin-top:7px;
+
+  color:#667085;
+
+  font-size:13px;
+
+  font-weight:600;
+}
+
+.image-help{
+
+  font-size:12px;
+
+  color:#667085;
+
+  margin-top:9px;
+
+  text-align:center;
+}
+
+.upload-count{
+
+  font-size:12px;
+
+  font-weight:800;
+
+  color:#00a88b;
+
+  margin-top:9px;
+
+  text-align:center;
+}
+
+/* ================= PREVIEW ================= */
+
+.preview-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:10px;
+
+  margin-top:14px;
+}
+
+.preview-item{
+
+  position:relative;
+
+  aspect-ratio:1;
+
+  border-radius:14px;
+
+  overflow:hidden;
+
+  background:#e8faf5;
+
+  border:1px solid #bdeee2;
+}
+
+.preview-item img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+}
+
+.remove-image{
+
+  position:absolute;
+
+  right:6px;
+
+  top:6px;
+
+  width:28px;
+
+  height:28px;
+
+  border:0 !important;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  color:#d92d20;
+
+  font-size:18px;
+
+  font-weight:900;
+
+  cursor:pointer;
+
+  box-shadow:0 3px 10px rgba(0,0,0,.12);
+}
+
+/* ================= PRODUCT ================= */
+
+.product{
+
+  display:flex;
+
+  gap:15px;
+
+  align-items:center;
+
+  padding:15px 0;
+
+  border-bottom:1px solid #edf0f5;
+}
+
+.product:last-child{
+  border-bottom:0;
+}
+
+.product-img{
+
+  width:70px;
+
+  height:70px;
+
+  border-radius:15px;
+
+  background:#e8faf5;
+
+  overflow:hidden;
+
+  flex:none;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.product-img img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+}
+
+.product-info{
+
+  flex:1;
+
+  min-width:0;
+}
+
+.product-info h3{
+
+  margin:0 0 5px;
+
+  font-size:17px;
+}
+
+.product-info p{
+
+  margin:0;
+
+  color:#667085;
+
+  font-size:13px;
+}
+
+.price{
+
+  font-weight:900;
+
+  color:#00a88b;
+
+  margin-top:5px;
+}
+
+.product-actions{
+
+  display:flex;
+
+  gap:7px;
+}
+
+.empty{
+
+  text-align:center;
+
+  padding:40px 10px;
+
+  color:#98a2b3;
+}
+
+/* ================= NOTE ================= */
+
+.note{
+
+  background:#e9faf5;
+
+  border-radius:15px;
+
+  padding:13px 15px;
+
+  color:#42665e;
+
+  font-size:13px;
+
+  line-height:1.6;
+
+  margin-top:18px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+
+  text-align:center;
+
+  color:#98a2b3;
+
+  font-size:13px;
+
+  padding:25px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .nav{
+    padding:0 4%;
+  }
+
+  .brand-text{
+    display:none;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  h1{
+    font-size:30px;
+  }
+
+  .product{
+    align-items:flex-start;
+  }
+
+  .product-actions{
+    flex-direction:column;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="nav">
+
+  <div class="brand">
+
+    <div class="logo" id="logoBox">
+
+      <span class="logo-fallback">
+        G
+      </span>
+
+    </div>
+
+    <div class="brand-text">
+
+      <b>CTV GIA KHÁNH</b>
+
+      <span>
+        HỆ THỐNG CTV CHUYÊN NGHIỆP
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="nav-right">
+
+    <span class="badge">
+      Quản trị viên
+    </span>
+
+    <button
+      class="btn gray"
+      onclick="goHome()"
+    >
+      Trang chủ
+    </button>
+
+  </div>
+
+</header>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="page">
+
+<div class="container">
+
+
+  <h1>
+    Trang quản trị
+  </h1>
+
+  <p class="sub">
+    Quản lý sách, khóa học và các sản phẩm trên hệ thống.
+  </p>
+
+
+
+  <!-- ================= THỐNG KÊ ================= -->
+
+  <div class="grid">
+
+    <div class="card">
+
+      <div class="stat-label">
+        Tổng sản phẩm
+      </div>
+
+      <div
+        class="stat-value purple"
+        id="totalProducts"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="stat-label">
+        Sách
+      </div>
+
+      <div
+        class="stat-value"
+        id="totalBooks"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="stat-label">
+        Khóa học
+      </div>
+
+      <div
+        class="stat-value green"
+        id="totalCourses"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="stat-label">
+        Giá trị sản phẩm
+      </div>
+
+      <div
+        class="stat-value yellow"
+        id="totalValue"
+      >
+        0đ
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================= 2 CỘT ================= -->
+
+  <div class="layout">
+
+
+    <!-- ================= FORM ================= -->
+
+    <section class="panel">
+
+
+      <h2 id="formTitle">
+        ➕ Thêm sản phẩm
+      </h2>
+
+
+
+      <label>
+        Tên sản phẩm
+      </label>
+
+      <input
+        id="name"
+        placeholder="Ví dụ: Sách Toán 8"
+      >
+
+
+
+      <label>
+        Loại sản phẩm
+      </label>
+
+      <select id="type">
+
+        <option value="Sách">
+          Sách
+        </option>
+
+        <option value="Khóa học">
+          Khóa học
+        </option>
+
+        <option value="Sản phẩm khác">
+          Sản phẩm khác
+        </option>
+
+      </select>
+
+
+
+      <label>
+        Giá bán
+      </label>
+
+      <input
+        id="price"
+        type="number"
+        min="0"
+        placeholder="Ví dụ: 199000"
+      >
+
+
+
+      <!-- ================= UPLOAD ================= -->
+
+      <label>
+        Ảnh sản phẩm
+      </label>
+
+
+      <div class="image-upload-box">
+
+
+        <!-- Ô BẤM TẢI ẢNH -->
+
+        <label
+          class="image-upload-label"
+          for="imageFiles"
+        >
+
+          <span class="image-upload-icon">
+            📤
+          </span>
+
+          <span class="image-upload-text">
+
+            Tải ảnh sản phẩm lên
+
+            <small>
+              Nhấn vào đây để chọn ảnh
+            </small>
+
+          </span>
+
+        </label>
+
+
+        <!-- INPUT FILE -->
+
+        <input
+          id="imageFiles"
+          type="file"
+          accept="image/*"
+          multiple
+          onchange="handleImages(event)"
+        >
+
+
+        <div class="image-help">
+
+          📸 Có thể chọn nhiều ảnh
+
+        </div>
+
+
+        <div
+          class="upload-count"
+          id="uploadCount"
+        >
+          Chưa chọn ảnh
+        </div>
+
+
+        <!-- ẢNH XEM TRƯỚC -->
+
+        <div
+          class="preview-grid"
+          id="previewGrid"
+        ></div>
+
+
+      </div>
+
+
+
+      <!-- ================= MÔ TẢ ================= -->
+
+      <label>
+        Mô tả
+      </label>
+
+      <textarea
+        id="description"
+        placeholder="Mô tả ngắn về sản phẩm..."
+      ></textarea>
+
+
+
+      <!-- ================= BUTTON ================= -->
+
+      <div class="actions">
+
+        <button
+          class="btn primary"
+          id="saveBtn"
+          onclick="saveProduct()"
+        >
+          Thêm sản phẩm
+        </button>
+
+
+        <button
+          class="btn gray"
+          id="cancelBtn"
+          onclick="cancelEdit()"
+          style="display:none"
+        >
+          Hủy sửa
+        </button>
+
+      </div>
+
+
+
+      <div class="note">
+
+        💡 Dữ liệu được lưu trong trình duyệt bằng
+        <b>localStorage</b>.
+
+        Nếu xóa dữ liệu trình duyệt hoặc đổi máy,
+        danh sách có thể không còn.
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- ================= DANH SÁCH ================= -->
+
+    <section class="panel">
+
+
+      <h2>
+        📦 Danh sách sản phẩm
+      </h2>
+
+
+      <div id="productList"></div>
+
+
+    </section>
+
+
+  </div>
+
+</div>
+
+ <section class="panel" style="margin-top:25px">
+
+<h2>👥 QUẢN LÝ CTV</h2>
+
+<p>
+Duyệt tài khoản CTV mới đăng ký
+</p>
+
+
+<div style="
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin:20px 0;
+">
+
+<div style="
+padding:18px;
+border-radius:15px;
+background:#eeeaff;
+">
+<small>Tổng CTV</small>
+<h2 id="totalCTV">0</h2>
+</div>
+
+
+<div style="
+padding:18px;
+border-radius:15px;
+background:#fff5d6;
+">
+<small>Chờ duyệt</small>
+<h2 id="pendingCTV">0</h2>
+</div>
+
+
+<div style="
+padding:18px;
+border-radius:15px;
+background:#e5faf3;
+">
+<small>Đã duyệt</small>
+<h2 id="approvedCTV">0</h2>
+</div>
+
+
+<div style="
+padding:18px;
+border-radius:15px;
+background:#fff0f0;
+">
+<small>Từ chối</small>
+<h2 id="rejectedCTV">0</h2>
+</div>
+
+</div>
+
+
+<div style="
+overflow:auto;
+">
+
+<table style="
+width:100%;
+border-collapse:collapse;
+">
+
+<thead>
+
+<tr>
+
+<th style="padding:12px">
+Họ tên
+</th>
+
+<th style="padding:12px">
+Email
+</th>
+
+<th style="padding:12px">
+SĐT
+</th>
+
+<th style="padding:12px">
+Username
+</th>
+
+<th style="padding:12px">
+Trạng thái
+</th>
+
+<th style="padding:12px">
+Thao tác
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="ctvTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</section> </main>
+
+
+
+
+  CTV GIA KHÁNH • HỆ THỐNG CTV CHUYÊN NGHIỆP
+
+</div>
+
+
+
+ <script>
+
+ if (sessionStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.href = "admin-login.html";
+} /*================= CẤU HÌNH ================= */
+
+const CONFIG = {
+
+  logo:"logo.jpg",
+
+  homePage:"index.html"
+
+};
+
+
+
+/* ================= DỮ LIỆU ================= */
+
+let products =
+  JSON.parse(
+    localStorage.getItem("ctv_products") || "[]"
+  );
+
+
+let editingId = null;
+
+
+/*
+  Danh sách ảnh đang chọn
+*/
+
+let selectedImages = [];
+
+
+
+/* ================= ĐỌC ẢNH ================= */
+
+function readImage(file){
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        () => resolve(reader.result);
+
+      reader.onerror =
+        reject;
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+
+}
+
+
+
+/* ================= CHỌN ẢNH ================= */
+
+async function handleImages(event){
+
+  const files =
+    [...event.target.files];
+
+
+  selectedImages = [];
+
+
+  for(const file of files){
+
+
+    if(
+      !file.type.startsWith("image/")
+    ){
+
+      continue;
+
+    }
+
+
+    /*
+      Giới hạn dung lượng
+      mỗi ảnh 2MB
+    */
+
+    if(
+      file.size >
+      2 * 1024 * 1024
+    ){
+
+      alert(
+        "Ảnh " +
+        file.name +
+        " lớn hơn 2MB!"
+      );
+
+      continue;
+
+    }
+
+
+    const imageData =
+      await readImage(file);
+
+
+    selectedImages.push(
+      imageData
+    );
+
+  }
+
+
+  renderImagePreview();
+
+}
+
+
+
+/* ================= XEM TRƯỚC ẢNH ================= */
+
+function renderImagePreview(){
+
+
+  const grid =
+    document.getElementById(
+      "previewGrid"
+    );
+
+
+  const count =
+    document.getElementById(
+      "uploadCount"
+    );
+
+
+  count.textContent =
+    selectedImages.length
+
+      ? "Đã chọn " +
+        selectedImages.length +
+        " ảnh"
+
+      : "Chưa chọn ảnh";
+
+
+  grid.innerHTML =
+    selectedImages
+      .map(
+        (image,index)=>`
+
+        <div class="preview-item">
+
+          <img
+            src="${image}"
+            alt="Ảnh sản phẩm"
+          >
+
+          <button
+            type="button"
+            class="remove-image"
+            onclick="removeImage(${index})"
+          >
+            ×
+          </button>
+
+        </div>
+
+      `
+      )
+      .join("");
+
+}
+
+
+
+/* ================= XÓA ẢNH ================= */
+
+function removeImage(index){
+
+  selectedImages.splice(
+    index,
+    1
+  );
+
+  renderImagePreview();
+
+}
+
+
+
+/* ================= TIỀN ================= */
+
+function money(n){
+
+  return Number(
+    n || 0
+  ).toLocaleString("vi-VN") + "đ";
+
+}
+
+
+
+/* ================= LƯU DATA ================= */
+
+function saveData(){
+
+  localStorage.setItem(
+    "ctv_products",
+    JSON.stringify(products)
+  );
+
+}
+
+
+
+/* ================= ESCAPE HTML ================= */
+
+function escapeHtml(str){
+
+  return String(
+    str ?? ""
+  ).replace(
+    /[&<>"']/g,
+
+    m => ({
+
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+
+    }[m])
+
+  );
+
+}
+
+
+
+/* ================= HIỂN THỊ ================= */
+
+function render(){
+
+
+  const list =
+    document.getElementById(
+      "productList"
+    );
+
+
+  document.getElementById(
+    "totalProducts"
+  ).textContent =
+    products.length;
+
+
+  document.getElementById(
+    "totalBooks"
+  ).textContent =
+    products.filter(
+      p => p.type === "Sách"
+    ).length;
+
+
+  document.getElementById(
+    "totalCourses"
+  ).textContent =
+    products.filter(
+      p => p.type === "Khóa học"
+    ).length;
+
+
+  document.getElementById(
+    "totalValue"
+  ).textContent =
+    money(
+      products.reduce(
+        (sum,p) =>
+          sum +
+          Number(p.price || 0),
+        0
+      )
+    );
+
+
+
+  if(!products.length){
+
+    list.innerHTML = `
+      <div class="empty">
+
+        Chưa có sản phẩm nào.
+
+        <br>
+
+        Hãy thêm sản phẩm ở khung bên trái.
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+
+  list.innerHTML =
+    products
+      .map(
+        p => `
+
+        <div class="product">
+
+
+          <div class="product-img">
+
+            ${
+              p.image
+
+              ?
+
+              `<img
+                src="${escapeHtml(p.image)}"
+                onerror="this.style.display='none'"
+              >`
+
+              :
+
+              `<span style="font-size:28px">
+
+                ${
+                  p.type === "Sách"
+                  ? "📚"
+                  : p.type === "Khóa học"
+                  ? "🎓"
+                  : "✨"
+                }
+
+              </span>`
+
+            }
+
+          </div>
+
+
+
+          <div class="product-info">
+
+            <h3>
+              ${escapeHtml(p.name)}
+            </h3>
+
+            <p>
+
+              ${escapeHtml(p.type)}
+
+              ${
+                p.description
+                ? " • " +
+                  escapeHtml(p.description)
+                : ""
+              }
+
+            </p>
+
+            <div class="price">
+
+              ${money(p.price)}
+
+            </div>
+
+          </div>
+
+
+
+          <div class="product-actions">
+
+            <button
+              class="btn gray"
+              onclick="editProduct('${p.id}')"
+            >
+              Sửa
+            </button>
+
+
+            <button
+              class="btn danger"
+              onclick="deleteProduct('${p.id}')"
+            >
+              Xóa
+            </button>
+
+          </div>
+
+
+        </div>
+
+      `
+      )
+      .join("");
+
+}
+
+
+
+/* ================= THÊM / SỬA ================= */
+
+function saveProduct(){
+
+
+  const name =
+    document
+      .getElementById("name")
+      .value
+      .trim();
+
+
+  const type =
+    document
+      .getElementById("type")
+      .value;
+
+
+  const price =
+    document
+      .getElementById("price")
+      .value;
+
+
+  const description =
+    document
+      .getElementById("description")
+      .value
+      .trim();
+
+
+
+  if(!name){
+
+    alert(
+      "Vui lòng nhập tên sản phẩm."
+    );
+
+    return;
+
+  }
+
+
+
+  /*
+    Nếu đang sửa mà không chọn ảnh mới
+    thì giữ ảnh cũ
+  */
+
+  let imagesToSave =
+    selectedImages.length
+    ? [...selectedImages]
+    : [];
+
+
+
+  if(
+    editingId &&
+    !imagesToSave.length
+  ){
+
+    const oldProduct =
+      products.find(
+        p => p.id === editingId
+      );
+
+
+    if(oldProduct){
+
+      imagesToSave =
+        Array.isArray(
+          oldProduct.images
+        )
+
+        ? [...oldProduct.images]
+
+        : oldProduct.image
+        ? [oldProduct.image]
+        : [];
+
+    }
+
+  }
+
+
+
+  const data = {
+
+    name:name,
+
+    type:type,
+
+    price:Number(
+      price || 0
+    ),
+
+    image:
+      imagesToSave[0] || "",
+
+    images:
+      imagesToSave,
+
+    description:
+      description
+
+  };
+
+
+
+  /* ================= SỬA ================= */
+
+  if(editingId){
+
+
+    const index =
+      products.findIndex(
+        p =>
+          p.id === editingId
+      );
+
+
+    if(index !== -1){
+
+      products[index] = {
+
+        ...products[index],
+
+        ...data
+
+      };
+
+    }
+
+
+    alert(
+      "Đã cập nhật sản phẩm."
+    );
+
+
+  }
+
+  /* ================= THÊM ================= */
+
+  else{
+
+
+    products.unshift({
+
+      id:
+        Date.now().toString(),
+
+      ...data
+
+    });
+
+
+    alert(
+      "Đã thêm sản phẩm."
+    );
+
+  }
+
+
+
+  saveData();
+
+  render();
+
+  clearForm();
+
+}
+
+
+
+/* ================= SỬA SẢN PHẨM ================= */
+
+function editProduct(id){
+
+
+  const p =
+    products.find(
+      x => x.id === id
+    );
+
+
+  if(!p){
+    return;
+  }
+
+
+
+  editingId = id;
+
+
+
+  document.getElementById(
+    "name"
+  ).value =
+    p.name || "";
+
+
+
+  document.getElementById(
+    "type"
+  ).value =
+    p.type || "Sách";
+
+
+
+  document.getElementById(
+    "price"
+  ).value =
+    p.price || "";
+
+
+
+  document.getElementById(
+    "description"
+  ).value =
+    p.description || "";
+
+
+
+  /*
+    Hiện lại ảnh cũ
+  */
+
+  selectedImages =
+    Array.isArray(p.images)
+    ? [...p.images]
+    : p.image
+    ? [p.image]
+    : [];
+
+
+  renderImagePreview();
+
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "✏️ Sửa sản phẩm";
+
+
+  document.getElementById(
+    "saveBtn"
+  ).textContent =
+    "Lưu thay đổi";
+
+
+  document.getElementById(
+    "cancelBtn"
+  ).style.display =
+    "inline-block";
+
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
+}
+
+
+
+/* ================= XÓA ================= */
+
+function deleteProduct(id){
+
+
+  const p =
+    products.find(
+      x => x.id === id
+    );
+
+
+  if(!p){
+    return;
+  }
+
+
+
+  if(
+    confirm(
+      'Bạn có chắc muốn xóa "' +
+      p.name +
+      '" không?'
+    )
+  ){
+
+    products =
+      products.filter(
+        x =>
+          x.id !== id
+      );
+
+
+    saveData();
+
+    render();
+
+  }
+
+}
+
+
+
+/* ================= RESET FORM ================= */
+
+function clearForm(){
+
+
+  editingId = null;
+
+
+  document.getElementById(
+    "name"
+  ).value = "";
+
+
+  document.getElementById(
+    "type"
+  ).value =
+    "Sách";
+
+
+  document.getElementById(
+    "price"
+  ).value = "";
+
+
+  document.getElementById(
+    "description"
+  ).value = "";
+
+
+  document.getElementById(
+    "imageFiles"
+  ).value = "";
+
+
+  selectedImages = [];
+
+
+  renderImagePreview();
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "➕ Thêm sản phẩm";
+
+
+  document.getElementById(
+    "saveBtn"
+  ).textContent =
+    "Thêm sản phẩm";
+
+
+  document.getElementById(
+    "cancelBtn"
+  ).style.display =
+    "none";
+
+}
+
+
+
+/* ================= HỦY SỬA ================= */
+
+function cancelEdit(){
+
+  clearForm();
+
+}
+
+
+
+/* ================= TRANG CHỦ ================= */
+
+function goHome(){
+
+  window.location.href =
+    CONFIG.homePage;
+
+}
+
+
+
+/* ================= LOGO ================= */
+
+if(CONFIG.logo){
+
+  document.getElementById(
+    "logoBox"
+  ).innerHTML =
+
+    '<img src="' +
+    CONFIG.logo +
+    '" alt="Logo" ' +
+    'onerror="this.style.display=\'none\'">';
+
+}
+
+
+
+/* ================= CHẠY ================= */
+
+render();/* ==============================
+   QUẢN LÝ CTV
+================================ */
+
+function getCTV(){
+
+    return JSON.parse(
+        localStorage.getItem("ctv_accounts")
+        || "[]"
+    );
+
+}
+
+
+function saveCTV(accounts){
+
+    localStorage.setItem(
+        "ctv_accounts",
+        JSON.stringify(accounts)
+    );
+
+}
+
+
+function renderCTV(){
+
+    const accounts=getCTV();
+
+    const table=
+        document.getElementById("ctvTable");
+
+
+    if(!table) return;
+
+
+    document.getElementById("totalCTV")
+    .textContent=accounts.length;
+
+
+    document.getElementById("pendingCTV")
+    .textContent=
+        accounts.filter(
+            a=>
+            (a.status || "pending")
+            ==="pending"
+        ).length;
+
+
+    document.getElementById("approvedCTV")
+    .textContent=
+        accounts.filter(
+            a=>
+            a.status==="approved"
+        ).length;
+
+
+    document.getElementById("rejectedCTV")
+    .textContent=
+        accounts.filter(
+            a=>
+            a.status==="rejected"
+        ).length;
+
+
+    if(accounts.length===0){
+
+        table.innerHTML=`
+
+        <tr>
+
+        <td
+        colspan="6"
+        style="
+        text-align:center;
+        padding:30px;
+        ">
+
+        Chưa có CTV đăng ký.
+
+        </td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    table.innerHTML=
+    accounts.map((a,index)=>{
+
+        const status=
+            a.status || "pending";
+
+
+        let statusHTML;
+
+
+        if(status==="approved"){
+
+            statusHTML=`
+            <span style="
+            color:#00866f;
+            font-weight:bold;
+            ">
+            🟢 Đã duyệt
+            </span>
+            `;
+
+        }
+
+        else if(status==="rejected"){
+
+            statusHTML=`
+            <span style="
+            color:#d92d20;
+            font-weight:bold;
+            ">
+            🔴 Từ chối
+            </span>
+            `;
+
+        }
+
+        else{
+
+            statusHTML=`
+            <span style="
+            color:#a66d00;
+            font-weight:bold;
+            ">
+            🟡 Chờ duyệt
+            </span>
+            `;
+
+        }
+
+
+        let buttons="";
+
+
+        if(status!=="approved"){
+
+            buttons+=`
+
+            <button
+            onclick="approveCTV(${index})"
+            style="
+            background:#00a884;
+            color:white;
+            border:0;
+            padding:8px 12px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+            ">
+
+            ✓ Duyệt
+
+            </button>
+
+            `;
+
+        }
+
+
+        if(status!=="rejected"){
+
+            buttons+=`
+
+            <button
+            onclick="rejectCTV(${index})"
+            style="
+            background:#fff0f0;
+            color:#d92d20;
+            border:0;
+            padding:8px 12px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+            ">
+
+            Từ chối
+
+            </button>
+
+            `;
+
+        }
+
+
+        buttons+=`
+
+        <button
+        onclick="deleteCTV(${index})"
+        style="
+        background:#eef0f5;
+        color:#344054;
+        border:0;
+        padding:8px 12px;
+        border-radius:8px;
+        cursor:pointer;
+        ">
+
+        Xóa
+
+        </button>
+
+        `;
+
+
+        return `
+
+        <tr
+        style="
+        border-bottom:1px solid #eee;
+        ">
+
+        <td style="padding:12px">
+        <b>
+        ${escapeCTV(a.fullname)}
+        </b>
+        </td>
+
+
+        <td style="padding:12px">
+        ${escapeCTV(a.email)}
+        </td>
+
+
+        <td style="padding:12px">
+        ${escapeCTV(a.phone)}
+        </td>
+
+
+        <td style="padding:12px">
+        ${escapeCTV(a.username)}
+        </td>
+
+
+        <td style="padding:12px">
+        ${statusHTML}
+        </td>
+
+
+        <td style="
+        padding:12px;
+        white-space:nowrap;
+        ">
+
+        ${buttons}
+
+        </td>
+
+        </tr>
+
+        `;
+
+    }).join("");
+
+}
+
+
+
+/* DUYỆT */
+
+function approveCTV(index){
+
+    const accounts=getCTV();
+
+
+    accounts[index].status="approved";
+
+
+    saveCTV(accounts);
+
+
+    renderCTV();
+
+
+    alert(
+        "✅ Đã duyệt tài khoản CTV!"
+    );
+
+}
+
+
+
+/* TỪ CHỐI */
+
+function rejectCTV(index){
+
+    const accounts=getCTV();
+
+
+    accounts[index].status="rejected";
+
+
+    saveCTV(accounts);
+
+
+    renderCTV();
+
+
+    alert(
+        "❌ Đã từ chối tài khoản CTV."
+    );
+
+}
+
+
+
+/* XÓA */
+
+function deleteCTV(index){
+
+    const accounts=getCTV();
+
+
+    if(
+        !confirm(
+            "Bạn có chắc muốn xóa CTV này?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    accounts.splice(index,1);
+
+
+    saveCTV(accounts);
+
+
+    renderCTV();
+
+}
+
+
+
+/* CHỐNG HTML */
+
+function escapeCTV(text){
+
+    return String(text || "")
+    .replace(/[&<>"']/g,function(m){
+
+        return {
+
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+
+        }[m];
+
+    });
+
+}
+
+
+/* HIỂN THỊ */
+
+renderCTV();</script></body>
+</html>

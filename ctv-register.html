@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký CTV - CTV GIA KHÁNH</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top left,#ddd6ff,transparent 35%),
+        radial-gradient(circle at bottom right,#c9fff0,transparent 35%),
+        #f6f7fb;
+    color:#101828;
+}
+
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:35px auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 15px 45px rgba(40,30,90,.12);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:30px;
+}
+
+.logo{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    overflow:hidden;
+    background:#eeeaff;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.brand b{
+    display:block;
+    font-size:18px;
+}
+
+.brand span{
+    color:#00a884;
+    font-size:11px;
+    font-weight:bold;
+}
+
+h1{
+    font-size:32px;
+    margin:10px 0;
+}
+
+.desc{
+    color:#667085;
+    line-height:1.6;
+}
+
+.feature{
+    padding:18px;
+    border-radius:17px;
+    margin:14px 0;
+    line-height:1.5;
+}
+
+.purple{
+    background:#eeeaff;
+}
+
+.green{
+    background:#e4faf3;
+}
+
+.yellow{
+    background:#fff5d6;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:1px solid #d9dce5;
+    border-radius:12px;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#5b45f5;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(90deg,#5137f5,#745cff);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.message{
+    display:none;
+    margin-top:15px;
+    padding:14px;
+    border-radius:12px;
+    line-height:1.5;
+    font-weight:bold;
+}
+
+.links{
+    text-align:center;
+    margin-top:18px;
+    color:#667085;
+}
+
+.links a{
+    color:#5137f5;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media(max-width:800px){
+
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    .left{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card left">
+
+        <div class="brand">
+
+            <div class="logo">
+                <img src="logo.jpg">
+            </div>
+
+            <div>
+                <b>CTV GIA KHÁNH</b>
+                <span>HỆ THỐNG CTV</span>
+            </div>
+
+        </div>
+
+        <h1>Tham gia đội ngũ CTV 🚀</h1>
+
+        <p class="desc">
+            Tạo tài khoản để bắt đầu bán sách,
+            giới thiệu khóa học và quản lý hoạt động CTV.
+        </p>
+
+        <div class="feature purple">
+            📝 <b>Đăng ký nhanh</b><br>
+            Điền đầy đủ thông tin tài khoản.
+        </div>
+
+        <div class="feature green">
+            🛡️ <b>Tài khoản sử dụng ngay</b><br>
+            Đăng ký xong có thể đăng nhập và sử dụng.
+        </div>
+
+        <div class="feature yellow">
+            📊 <b>Dashboard riêng</b><br>
+            Theo dõi sản phẩm, đơn hàng và hoa hồng.
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h1>Đăng ký CTV</h1>
+
+        <p class="desc">
+            Nhập thông tin chính xác để tạo tài khoản CTV.
+        </p>
+
+        <form id="registerForm">
+
+            <label>Họ và tên</label>
+
+            <input
+                id="fullname"
+                type="text"
+                placeholder="Nguyễn Văn A"
+                required
+            >
+
+
+            <label>Email</label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="example@gmail.com"
+                required
+            >
+
+
+            <label>Số điện thoại</label>
+
+            <input
+                id="phone"
+                type="tel"
+                placeholder="09xxxxxxxx"
+                required
+            >
+
+
+            <label>Tên đăng nhập</label>
+
+            <input
+                id="username"
+                type="text"
+                placeholder="tenctv123"
+                minlength="4"
+                required
+            >
+
+
+            <label>Mật khẩu</label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Tối thiểu 6 ký tự"
+                minlength="6"
+                required
+            >
+
+
+            <label>Nhập lại mật khẩu</label>
+
+            <input
+                id="confirm"
+                type="password"
+                placeholder="Nhập lại mật khẩu"
+                minlength="6"
+                required
+            >
+
+
+            <label style="
+                display:flex;
+                align-items:center;
+                gap:10px;
+                font-weight:normal;
+                cursor:pointer;
+                margin-top:15px;
+            ">
+
+                <input
+                    id="agree"
+                    type="checkbox"
+                    style="
+                        width:18px;
+                        height:18px;
+                    "
+                >
+
+                <span>
+                    Tôi đồng ý với các điều khoản trên.
+                </span>
+
+            </label>
+
+
+            <button type="submit">
+                ĐĂNG KÝ TÀI KHOẢN →
+            </button>
+
+
+            <div
+                class="message"
+                id="message"
+            ></div>
+
+        </form>
+
+
+        <div class="links">
+
+            Đã có tài khoản?
+
+            <a href="ctv-login.html">
+                Đăng nhập
+            </a>
+
+        </div>
+
+
+        <div class="links">
+
+            <a href="index.html">
+                ← Về trang chủ
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const message =
+    document.getElementById("message");
+
+
+registerForm.addEventListener(
+    "submit",
+    function(e){
+
+        e.preventDefault();
+
+
+        const fullname =
+            document
+            .getElementById("fullname")
+            .value
+            .trim();
+
+
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+        const phone =
+            document
+            .getElementById("phone")
+            .value
+            .trim();
+
+
+        const username =
+            document
+            .getElementById("username")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+        const password =
+            document
+            .getElementById("password")
+            .value;
+
+
+        const confirm =
+            document
+            .getElementById("confirm")
+            .value;
+
+
+        const agree =
+            document
+            .getElementById("agree")
+            .checked;
+
+
+        let accounts =
+            JSON.parse(
+                localStorage.getItem("ctv_accounts") || "[]"
+            );
+
+
+        /* KIỂM TRA ĐIỀU KHOẢN */
+
+        if(!agree){
+
+            showMessage(
+                "❌ Vui lòng tích vào ô đồng ý với các điều khoản.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* KIỂM TRA MẬT KHẨU */
+
+        if(password !== confirm){
+
+            showMessage(
+                "❌ Mật khẩu nhập lại không khớp.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* KIỂM TRA USERNAME */
+
+        if(
+            accounts.some(function(account){
+
+                return String(account.username)
+                    .trim()
+                    .toLowerCase() === username;
+
+            })
+        ){
+
+            showMessage(
+                "❌ Tên đăng nhập đã tồn tại.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* KIỂM TRA EMAIL */
+
+        if(
+            accounts.some(function(account){
+
+                return String(account.email)
+                    .trim()
+                    .toLowerCase() === email;
+
+            })
+        ){
+
+            showMessage(
+                "❌ Email này đã được đăng ký.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* TẠO TÀI KHOẢN */
+
+        const newAccount = {
+
+            fullname: fullname,
+
+            email: email,
+
+            phone: phone,
+
+            username: username,
+
+            password: password,
+
+            status: "approved",
+
+            createdAt:
+                new Date()
+                .toLocaleDateString("vi-VN")
+
+        };
+
+
+        /* LƯU TÀI KHOẢN */
+
+        accounts.push(newAccount);
+
+
+        localStorage.setItem(
+            "ctv_accounts",
+            JSON.stringify(accounts)
+        );
+
+
+        /* THÔNG BÁO */
+
+        showMessage(
+            "✅ Đăng ký thành công! Bạn có thể đăng nhập ngay.",
+            "success"
+        );
+
+
+        /* XÓA FORM */
+
+        registerForm.reset();
+
+    }
+);
+
+
+/* HIỂN THỊ THÔNG BÁO */
+
+function showMessage(text,type){
+
+    message.style.display = "block";
+
+    message.innerHTML = text;
+
+
+    if(type === "success"){
+
+        message.style.background = "#e5faf3";
+
+        message.style.color = "#00866f";
+
+    }else{
+
+        message.style.background = "#fff0f0";
+
+        message.style.color = "#d92d20";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

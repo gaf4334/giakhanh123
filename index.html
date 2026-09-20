@@ -1,0 +1,1005 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> CTV GIA KHÁNH - Nền tảng CTV</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;color:#0b1736;background:#fff}
+a{text-decoration:none;color:inherit}
+.nav{height:82px;border-bottom:1px solid #e9edf5;display:flex;align-items:center;padding:0 32px;gap:28px;position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);z-index:10}
+.brand{display:flex;align-items:center;gap:12px;min-width:320px}
+.logo{width:55px;height:55px;border-radius:13px;background:#fff;box-shadow:0 8px 24px rgba(78,55,230,.20);display:grid;place-items:center;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:contain}
+.logo-fallback{font-weight:900;color:#4f35f5;font-size:15px}
+.brand-text strong{display:block;font-size:19px;letter-spacing:.2px}
+.brand-text span{font-size:11px;font-weight:700;color:#00a88b;letter-spacing:.4px}
+.menu{display:flex;gap:28px;align-items:center;font-size:14px;flex:1;justify-content:center}
+.menu a:hover{color:#5036f5}
+.actions{display:flex;align-items:center;gap:22px;font-weight:700;font-size:14px}
+.btn{border:0;border-radius:15px;padding:13px 20px;font-size:14px;font-weight:800;cursor:pointer}
+.btn-primary{background:#5137f5;color:#fff;box-shadow:0 10px 22px rgba(81,55,245,.18)}
+.btn-outline{background:#fff;color:#25304b;border:1px solid #ccd5e6}
+.hero{min-height:598px;padding:80px 32px 60px;position:relative;overflow:hidden;background:radial-gradient(circle at 48% 100%,#effffb 0,transparent 30%),linear-gradient(180deg,#fff 60%,#fbfcff)}
+.hero-inner{max-width:1300px;margin:auto;display:grid;grid-template-columns:1.18fr .82fr;gap:55px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid #9cebd7;border-radius:999px;color:#008d75;background:#f2fffb;font-size:12px;font-weight:800;margin-bottom:27px}
+.badge:before{content:"♢";font-size:17px}
+h1{font-size:64px;line-height:1.05;letter-spacing:-2.8px;margin:0 0 25px;max-width:700px}
+.lead{font-size:18px;line-height:1.55;color:#425271;max-width:690px;margin-bottom:26px}
+.pills{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px}
+.pill{padding:14px 18px;border-radius:13px;font-size:14px;font-weight:800;background:#f3f6ff;border:1px solid #dce4fa;color:#4935ef;box-shadow:0 5px 12px rgba(30,50,100,.06)}
+.pill:nth-child(2){background:#f0fffa;color:#009678;border-color:#c8f5e8}
+.pill:nth-child(3){background:#fffaf0;color:#c88700;border-color:#ffe4a8}
+.ctas{display:flex;gap:15px;flex-wrap:wrap}
+.ctas .btn{min-width:220px;padding:17px 22px;font-size:16px}
+.dashboard{border:1px solid #dfe5ef;border-radius:25px;background:#fff;padding:25px;box-shadow:0 25px 60px rgba(30,48,100,.12)}
+.top-card{display:flex;align-items:center;gap:13px;padding-bottom:17px;border-bottom:1px solid #e7ebf2}
+.avatar{width:43px;height:43px;border-radius:50%;background:#e8edff;color:#4b38f5;display:grid;place-items:center;font-weight:900}
+.person{flex:1}.person strong{font-size:14px}.person span{display:block;color:#00a37f;font-size:11px;font-weight:800;margin-top:4px}
+.money{text-align:right}.money small{display:block;color:#8b96aa;font-size:10px;font-weight:800}.money b{font-size:17px}
+.success{margin:20px 0 16px;padding:13px;border:1px solid #a8ead8;background:#effff9;border-radius:16px;display:flex;gap:12px;align-items:center}
+.dollar{width:34px;height:34px;border-radius:50%;background:#00bb88;color:white;display:grid;place-items:center;font-weight:900}
+.success div:nth-child(2){flex:1}.success strong{font-size:12px}.success small{display:block;color:#00a37f;margin-top:3px}.ok{font-size:10px;font-weight:800;color:#008c70;background:#c8f6e9;padding:6px 9px;border-radius:8px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{background:#f8fafc;border:1px solid #edf0f5;border-radius:16px;padding:15px}.stat small{display:block;color:#7d899d;font-size:11px;margin-bottom:5px}.stat b{font-size:19px}.purple{color:#5036f5}
+.history{margin-top:25px}.history-head{display:flex;justify-content:space-between;color:#8a96aa;font-size:10px;font-weight:800;margin-bottom:8px}.history-head span:last-child{color:#5137f5}
+.row{display:flex;justify-content:space-between;background:#f7f9fb;border-radius:13px;padding:9px 12px;margin:8px 0;font-size:11px}.row b{color:#00a67e}
+.access{width:100%;margin-top:18px;background:#101a35;color:#fff;border:0;border-radius:13px;padding:14px;font-weight:800}
+.support{position:absolute;right:25px;bottom:18px;width:70px;height:70px;border-radius:50%;background:#2467e9;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:900;box-shadow:0 10px 30px rgba(36,103,233,.3)}
+.section{padding:70px 32px;max-width:1100px;margin:auto;text-align:center}.section h2{font-size:36px;margin:0 0 12px}.section p{color:#66738a}
+@media(max-width:1000px){.menu{display:none}.brand{min-width:0}.hero-inner{grid-template-columns:1fr}.hero{padding-top:55px}h1{font-size:52px}.dashboard{max-width:650px}.actions{margin-left:auto}}
+@media(max-width:600px){.nav{padding:0 16px}.actions a:first-child{display:none}.hero{padding:45px 18px}.hero-inner{gap:35px}h1{font-size:42px;letter-spacing:-1.8px}.lead{font-size:16px}.ctas .btn{width:100%}.dashboard{padding:18px;border-radius:20px}.money b{font-size:14px}.support{right:12px}.brand-text strong{font-size:16px}}
+</style>
+</head>
+<body>
+
+<script>
+/* =========================
+   ĐỔI TÊN + LOGO Ở ĐÂY
+   ========================= */
+const CONFIG = {
+  name: "CTV GiA KHÁNH",
+  tagline: "HỆ THỐNG CTV CHUYÊN NGHIỆP",
+ logo:"logo.jpg",// Ví dụ: "logo.jpg" nếu logo nằm cùng thư mục với file này
+  title: "Gia Tăng Thu Nhập Không Giới Hạn Cùng",
+  description: "Bán sách, giới thiệu khóa học và sản phẩm giáo dục phù hợp. Bắt đầu đơn giản, được hướng dẫn và hỗ trợ trong quá trình làm."
+};
+</script>
+
+<header class="nav">
+  <a class="brand" href="#">
+    <div class="logo" id="logoBox"><span class="logo-fallback" id="logoText">CTV</span></div>
+    <div class="brand-text">
+      <strong id="brandName"></strong>
+      <span id="brandTagline"></span>
+    </div>
+  </a>
+  <nav class="menu">
+    <a href="#how">Cách Hoạt Động</a>
+    <a href="#income">Tính Thu Nhập</a>
+    <a href="#business">Mảng Kinh Doanh</a>
+    <a href="#share">Chiết khấu CTV </a>
+    <a href="#faq">FAQ</a>
+ <a href="admin-login.html">Admin</a> </nav>
+  <div class="actions">
+    <a href="ctv-login.html">Đăng nhập</a>
+   <button class="btn btn-primary" type="button" onclick="window.location.href='ctv-register.html'">Đăng ký CTV →</button>  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="badge">NỀN TẢNG ĐĂNG KÝ CTV UY TÍN HÀNG ĐẦU • MIỄN PHÍ 100%</div>
+      <h1 id="heroTitle"></h1>
+      <p class="lead" id="heroDescription"></p>
+      <div class="pills">
+        <div class="pill">✓ &nbsp;Kho Content Mẫu</div>
+        <div class="pill">✓ &nbsp;Leader Hỗ Trợ Chốt</div>
+        <div class="pill">✓ &nbsp;Rút Tiền Nhanh Tay</div>
+      </div>
+      <div class="ctas">
+        <button class="btn btn-primary">Đăng Ký Làm CTV Ngay &nbsp; →</button>
+        <button class="btn btn-outline">▣ &nbsp; Tính Thử Hoa Hồng</button>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="top-card">
+        <div class="avatar">TH</div>
+        <div class="person"><strong>Khánh Huyền (CTV)</strong><span>• Đã xác minh</span></div>
+        <div class="money"><small>VÍ HOA HỒNG</small><b>1,500,000đ</b></div>
+      </div>
+      <div class="success">
+        <div class="dollar">$</div>
+        <div><strong>Vừa chốt khoá học HLĐ 9!</strong><small>Hoa hồng cộng: +4,850,000đ</small></div>
+        <span class="ok">Thành công</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><small>Khách hàng (Lead)</small><b>18 Lead</b></div>
+        <div class="stat"><small>Phòng/Deal chốt</small><b class="purple">10 Thành công</b></div>
+      </div>
+      <div class="history">
+        <div class="history-head"><span>NHẬT KÝ CHỐT ĐƠN GẦN NHẤT</span><span>THỜI GIAN THỰC</span></div>
+        <div class="row"><span> Khoá HLĐ 9</span><b>+4,000,000đ</b></div>
+        <div class="row"><span>Khóa Học Chuyên Văn 9</span><b>+1,170,000đ</b></div>
+      </div>
+      <button class="access">Truy Cập Nền Tảng CTV &nbsp;›</button>
+    </div>
+  </div>
+  <div class="support">ZALO<br>SUPPORT</div>
+</section>
+
+<section class="section" id="how">
+  <h2>Tham gia đơn giản, bắt đầu ngay</h2>
+  <p>Tạo tài khoản → Chọn sản phẩm/dịch vụ → Giới thiệu khách hàng → Nhận hoa hồng.</p>
+</section>
+<section class="section" id="income">
+  <h2>Tính thu nhập minh bạch</h2>
+  <p>Bạn có thể thay phần này bằng bảng hoa hồng, công cụ tính tiền hoặc thông tin khóa học của mình.</p>
+</section>
+</main>
+
+<script>
+document.getElementById("brandName").textContent = CONFIG.name;
+document.getElementById("brandTagline").textContent = CONFIG.tagline;
+document.getElementById("heroTitle").textContent = CONFIG.title;
+document.getElementById("heroDescription").textContent = CONFIG.description;
+
+if(CONFIG.logo){
+  document.getElementById("logoBox").innerHTML = '<img src="' + CONFIG.logo + '" alt="Logo">';
+}
+</script>
+</body>
+</html>
+<!-- ==================== PHẦN DƯỚI ==================== -->
+
+<!-- CÁCH HOẠT ĐỘNG -->
+<section class="section" id="how">
+  <div class="container">
+
+    <div style="text-align:center;max-width:750px;margin:0 auto 45px">
+      <div class="eyebrow">CÁCH HOẠT ĐỘNG</div>
+
+      <h2 style="font-size:42px;margin:12px 0 15px">
+        Bắt đầu kiếm zthêm thu nhập<br>
+        <span style="color:#5137f5">chỉ với vài bước đơn giản</span>
+      </h2>
+
+      <p style="color:#667085;font-size:17px;line-height:1.7">
+        Không cần nhập hàng, không cần ôm vốn.
+        Bạn chỉ cần chia sẻ sản phẩm và nhận hoa hồng khi có đơn hàng.
+      </p>
+    </div>
+
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    ">
+
+      <!-- BƯỚC 1 -->
+      <div style="
+        background:#fff;
+        border:1px solid #e8eaf0;
+        border-radius:22px;
+        padding:30px;
+        box-shadow:0 10px 30px rgba(20,30,60,.05);
+      ">
+        <div style="
+          width:52px;
+          height:52px;
+          border-radius:16px;
+          background:#eeeaff;
+          color:#5137f5;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:22px;
+          font-weight:900;
+          margin-bottom:22px;
+        ">01</div>
+
+        <h3 style="font-size:22px;margin:0 0 12px">
+          Đăng ký tài khoản
+        </h3>
+
+        <p style="color:#667085;line-height:1.7;margin:0">
+          Tạo tài khoản CTV để bắt đầu sử dụng hệ thống
+          và quản lý đơn hàng của bạn.
+        </p>
+      </div>
+
+      <!-- BƯỚC 2 -->
+      <div style="
+        background:#fff;
+        border:1px solid #e8eaf0;
+        border-radius:22px;
+        padding:30px;
+        box-shadow:0 10px 30px rgba(20,30,60,.05);
+      ">
+        <div style="
+          width:52px;
+          height:52px;
+          border-radius:16px;
+          background:#e4faf5;
+          color:#00a88b;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:22px;
+          font-weight:900;
+          margin-bottom:22px;
+        ">02</div>
+
+        <h3 style="font-size:22px;margin:0 0 12px">
+          Chọn sản phẩm
+        </h3>
+
+        <p style="color:#667085;line-height:1.7;margin:0">
+          Lựa chọn sách, khóa học hoặc sản phẩm phù hợp
+          để giới thiệu tới khách hàng.
+        </p>
+      </div>
+
+      <!-- BƯỚC 3 -->
+      <div style="
+        background:#fff;
+        border:1px solid #e8eaf0;
+        border-radius:22px;
+        padding:30px;
+        box-shadow:0 10px 30px rgba(20,30,60,.05);
+      ">
+        <div style="
+          width:52px;
+          height:52px;
+          border-radius:16px;
+          background:#fff5d8;
+          color:#d99a00;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:22px;
+          font-weight:900;
+          margin-bottom:22px;
+        ">03</div>
+
+        <h3 style="font-size:22px;margin:0 0 12px">
+          Nhận hoa hồng
+        </h3>
+
+        <p style="color:#667085;line-height:1.7;margin:0">
+          Khi đơn hàng hoàn tất, hoa hồng của bạn sẽ được
+          ghi nhận và quản lý ngay trên hệ thống.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- TÍNH THU NHẬP -->
+<section class="section" id="income" style="
+  background:linear-gradient(180deg,#fff,#f8f7ff);
+">
+  <div class="container">
+
+    <div style="
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    ">
+
+      <!-- BÊN TRÁI -->
+      <div>
+
+        <div class="eyebrow">THU NHẬP CTV</div>
+
+        <h2 style="
+          font-size:42px;
+          line-height:1.15;
+          margin:12px 0 20px;
+        ">
+          Càng chia sẻ nhiều,<br>
+          <span style="color:#5137f5">
+            cơ hội kiếm thêm càng lớn
+          </span>
+        </h2>
+
+        <p style="
+          color:#667085;
+          font-size:17px;
+          line-height:1.8;
+        ">
+          Bạn có thể chủ động giới thiệu sản phẩm tới bạn bè,
+          khách hàng hoặc cộng đồng của mình.
+          Mỗi đơn hàng hợp lệ sẽ được ghi nhận theo chính sách
+          hoa hồng của hệ thống.
+        </p>
+
+        <div style="
+          display:flex;
+          gap:12px;
+          flex-wrap:wrap;
+          margin-top:25px;
+        ">
+          <span style="
+            background:#eeeaff;
+            color:#5137f5;
+            padding:10px 16px;
+            border-radius:999px;
+            font-weight:700;
+          ">
+            Không cần nhập hàng
+          </span>
+
+          <span style="
+            background:#e5faf5;
+            color:#008d76;
+            padding:10px 16px;
+            border-radius:999px;
+            font-weight:700;
+          ">
+            Quản lý đơn hàng
+          </span>
+
+          <span style="
+            background:#fff4d5;
+            color:#a66d00;
+            padding:10px 16px;
+            border-radius:999px;
+            font-weight:700;
+          ">
+            Theo dõi hoa hồng
+          </span>
+        </div>
+
+      </div>
+
+
+      <!-- BÊN PHẢI -->
+      <div style="
+        background:#fff;
+        border:1px solid #e7e8ef;
+        border-radius:28px;
+        padding:28px;
+        box-shadow:0 20px 50px rgba(30,35,70,.08);
+      ">
+
+        <div style="
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          margin-bottom:25px;
+        ">
+          <div>
+            <div style="
+              font-size:14px;
+              color:#667085;
+              margin-bottom:5px;
+            ">
+              Hoa hồng dự kiến
+            </div>
+
+            <div style="
+              font-size:35px;
+              font-weight:900;
+              color:#0b1736;
+            ">
+              2.450.000đ
+            </div>
+          </div>
+
+          <div style="
+            width:50px;
+            height:50px;
+            border-radius:16px;
+            background:#e5faf5;
+            color:#00a88b;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:24px;
+          ">
+            ✓
+          </div>
+        </div>
+
+
+        <div style="
+          height:1px;
+          background:#edf0f5;
+          margin:20px 0;
+        "></div>
+
+
+        <div style="
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:15px;
+        ">
+
+          <div style="
+            background:#f8f9fc;
+            border-radius:18px;
+            padding:18px;
+          ">
+            <div style="
+              color:#667085;
+              font-size:13px;
+              margin-bottom:7px;
+            ">
+              Đơn hàng
+            </div>
+
+            <strong style="font-size:24px">
+              35
+            </strong>
+          </div>
+
+
+          <div style="
+            background:#f8f9fc;
+            border-radius:18px;
+            padding:18px;
+          ">
+            <div style="
+              color:#667085;
+              font-size:13px;
+              margin-bottom:7px;
+            ">
+              Đã hoàn thành
+            </div>
+
+            <strong style="font-size:24px;color:#00a88b">
+              31
+            </strong>
+          </div>
+
+        </div>
+
+
+        <div style="
+          margin-top:18px;
+          background:#f5f3ff;
+          border-radius:18px;
+          padding:18px;
+        ">
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+          ">
+            <span style="color:#667085">
+              Hoa hồng tháng này
+            </span>
+
+            <strong style="color:#5137f5">
+              +850.000đ
+            </strong>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- MẢNG KINH DOANH -->
+<section class="section" id="business">
+  <div class="container">
+
+    <div style="
+      text-align:center;
+      max-width:720px;
+      margin:0 auto 45px;
+    ">
+
+      <div class="eyebrow">
+        MẢNG KINH DOANH
+      </div>
+
+      <h2 style="
+        font-size:42px;
+        margin:12px 0 15px;
+      ">
+        Nhiều sản phẩm để bạn
+        <span style="color:#5137f5">
+          lựa chọn
+        </span>
+      </h2>
+
+      <p style="
+        color:#667085;
+        font-size:17px;
+        line-height:1.7;
+      ">
+        Chọn những sản phẩm phù hợp với tệp khách hàng
+        và nội dung bạn đang xây dựng.
+      </p>
+
+    </div>
+
+
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    ">
+
+      <!-- SÁCH -->
+      <div style="
+        border:1px solid #e7e8ef;
+        border-radius:24px;
+        padding:30px;
+        background:#fff;
+        box-shadow:0 10px 30px rgba(20,30,60,.05);
+      ">
+
+        <div style="
+          width:58px;
+          height:58px;
+          border-radius:18px;
+          background:#eeeaff;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:28px;
+          margin-bottom:22px;
+        ">
+          📚
+        </div>
+
+        <h3 style="
+          font-size:24px;
+          margin:0 0 12px;
+        ">
+          Sách
+        </h3>
+
+        <p style="
+          color:#667085;
+          line-height:1.7;
+          margin:0;
+        ">
+          Các đầu sách học tập, tài liệu và sản phẩm
+          dành cho học sinh.
+        </p>
+
+      </div>
+
+
+      <!-- KHÓA HỌC -->
+      <div style="
+        border:1px solid #e7e8ef;
+        border-radius:24px;
+        padding:30px;
+        background:#fff;
+        box-shadow:0 10px 30px rgba(20,30,60,.05);
+      ">
+
+        <div style="
+          width:58px;
+          height:58px;
+          border-radius:18px;
+          background:#e5faf5;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:28px;
+          margin-bottom:22px;
+        ">
+          🎓
+        </div>
+
+        <h3 style="
+          font-size:24px;
+          margin:0 0 12px;
+        ">
+          Khóa học
+        </h3>
+
+        <p style="
+          color:#667085;
+          line-height:1.7;
+          margin:0;
+        ">
+          Các khóa học online giúp học sinh nâng cao
+          kiến thức và kỹ năng học tập.
+        </p>
+
+      </div>
+
+
+      <!-- SẢN PHẨM KHÁC -->
+      <div style="
+        border:1px solid #e7e8ef;
+        border-radius:24px;
+        padding:30px;
+        background:#fff;
+        box-shadow:0 10px 30px rgba(20,30,60,.05);
+      ">
+
+        <div style="
+          width:58px;
+          height:58px;
+          border-radius:18px;
+          background:#fff4d5;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:28px;
+          margin-bottom:22px;
+        ">
+          ✨
+        </div>
+
+        <h3 style="
+          font-size:24px;
+          margin:0 0 12px;
+        ">
+          Sản phẩm khác
+        </h3>
+
+        <p style="
+          color:#667085;
+          line-height:1.7;
+          margin:0;
+        ">
+          Những sản phẩm mới sẽ được cập nhật thêm
+          trên nền tảng theo từng thời điểm.
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CHIẾT KHẤU CTV -->
+<section class="section" id="share" style="
+  background:#0b1736;
+  color:#fff;
+">
+
+  <div class="container">
+
+    <div style="
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    ">
+
+      <div>
+
+        <div style="
+          display:inline-flex;
+          padding:8px 14px;
+          border-radius:999px;
+          background:rgba(255,255,255,.1);
+          color:#bdb5ff;
+          font-weight:800;
+          font-size:13px;
+        ">
+          CHÍNH SÁCH CTV
+        </div>
+
+        <h2 style="
+          font-size:42px;
+          line-height:1.15;
+          margin:18px 0;
+        ">
+          Chia sẻ sản phẩm,
+          <span style="color:#9d92ff">
+            nhận hoa hồng
+          </span>
+        </h2>
+
+        <p style="
+          color:#c4cada;
+          font-size:17px;
+          line-height:1.8;
+        ">
+          Mỗi sản phẩm có thể có mức hoa hồng khác nhau.
+          Hệ thống giúp bạn theo dõi đơn hàng và số tiền
+          được ghi nhận một cách rõ ràng.
+        </p>
+
+      </div>
+
+
+      <div style="
+        background:rgba(255,255,255,.07);
+        border:1px solid rgba(255,255,255,.12);
+        border-radius:28px;
+        padding:28px;
+      ">
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          padding:18px 0;
+          border-bottom:1px solid rgba(255,255,255,.1);
+        ">
+          <span style="color:#c4cada">
+            Giá sản phẩm
+          </span>
+
+          <strong>
+            500.000đ
+          </strong>
+        </div>
+
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          padding:18px 0;
+          border-bottom:1px solid rgba(255,255,255,.1);
+        ">
+          <span style="color:#c4cada">
+            Hoa hồng CTV
+          </span>
+
+          <strong style="color:#6ee7c8">
+            20%
+          </strong>
+        </div>
+
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          padding:18px 0;
+        ">
+          <span style="color:#c4cada">
+            Hoa hồng nhận được
+          </span>
+
+          <strong style="
+            color:#fff;
+            font-size:25px;
+          ">
+            100.000đ
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="section" id="faq">
+
+  <div class="container">
+
+    <div style="
+      text-align:center;
+      max-width:700px;
+      margin:0 auto 45px;
+    ">
+
+      <div class="eyebrow">
+        FAQ
+      </div>
+
+      <h2 style="
+        font-size:42px;
+        margin:12px 0 15px;
+      ">
+        Câu hỏi
+        <span style="color:#5137f5">
+          thường gặp
+        </span>
+      </h2>
+
+      <p style="
+        color:#667085;
+        font-size:17px;
+      ">
+        Một số câu hỏi thường gặp dành cho CTV mới.
+      </p>
+
+    </div>
+
+
+    <div style="
+      max-width:850px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    ">
+
+      <!-- FAQ 1 -->
+      <details style="
+        background:#fff;
+        border:1px solid #e5e7ef;
+        border-radius:18px;
+        padding:0 22px;
+      ">
+
+        <summary style="
+          cursor:pointer;
+          list-style:none;
+          padding:22px 0;
+          font-size:18px;
+          font-weight:800;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        ">
+          Làm thế nào để trở thành CTV?
+          <span style="color:#5137f5;font-size:24px">+</span>
+        </summary>
+
+        <div style="
+          padding:0 0 22px;
+          color:#667085;
+          line-height:1.8;
+        ">
+          Bạn chỉ cần đăng ký tài khoản CTV và hoàn thành
+          các thông tin cần thiết theo hướng dẫn trên hệ thống.
+        </div>
+
+      </details>
+
+
+      <!-- FAQ 2 -->
+      <details style="
+        background:#fff;
+        border:1px solid #e5e7ef;
+        border-radius:18px;
+        padding:0 22px;
+      ">
+
+        <summary style="
+          cursor:pointer;
+          list-style:none;
+          padding:22px 0;
+          font-size:18px;
+          font-weight:800;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        ">
+          CTV có cần nhập hàng trước không?
+          <span style="color:#5137f5;font-size:24px">+</span>
+        </summary>
+
+        <div style="
+          padding:0 0 22px;
+          color:#667085;
+          line-height:1.8;
+        ">
+          Không. CTV không cần tự nhập hàng để bắt đầu
+          giới thiệu sản phẩm. Chính sách cụ thể sẽ phụ thuộc
+          vào từng sản phẩm.
+        </div>
+
+      </details>
+
+
+      <!-- FAQ 3 -->
+      <details style="
+        background:#fff;
+        border:1px solid #e5e7ef;
+        border-radius:18px;
+        padding:0 22px;
+      ">
+
+        <summary style="
+          cursor:pointer;
+          list-style:none;
+          padding:22px 0;
+          font-size:18px;
+          font-weight:800;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        ">
+          Tôi xem đơn hàng ở đâu?
+          <span style="color:#5137f5;font-size:24px">+</span>
+        </summary>
+
+        <div style="
+          padding:0 0 22px;
+          color:#667085;
+          line-height:1.8;
+        ">
+          Sau khi đăng nhập vào nền tảng CTV, bạn có thể
+          theo dõi các đơn hàng và trạng thái đơn hàng
+          trong khu vực quản lý của tài khoản.
+        </div>
+
+      </details>
+
+
+      <!-- FAQ 4 -->
+      <details style="
+        background:#fff;
+        border:1px solid #e5e7ef;
+        border-radius:18px;
+        padding:0 22px;
+      ">
+
+        <summary style="
+          cursor:pointer;
+          list-style:none;
+          padding:22px 0;
+          font-size:18px;
+          font-weight:800;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        ">
+          Hoa hồng được tính như thế nào?
+          <span style="color:#5137f5;font-size:24px">+</span>
+        </summary>
+
+        <div style="
+          padding:0 0 22px;
+          color:#667085;
+          line-height:1.8;
+        ">
+          Mức hoa hồng được tính theo chính sách của từng
+          sản phẩm. Bạn có thể xem mức hoa hồng trước khi
+          lựa chọn sản phẩm để giới thiệu.
+        </div>
+
+      </details>
+
+
+      <!-- FAQ 5 -->
+      <details style="
+        background:#fff;
+        border:1px solid #e5e7ef;
+        border-radius:18px;
+        padding:0 22px;
+      ">
+
+        <summary style="
+          cursor:pointer;
+          list-style:none;
+          padding:22px 0;
+          font-size:18px;
+          font-weight:800;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        ">
+          Tôi có thể thay đổi thông tin tài khoản không?
+          <span style="color:#5137f5;font-size:24px">+</span>
+        </summary>
+
+        <div style="
+          padding:0 0 22px;
+          color:#667085;
+          line-height:1.8;
+        ">
+          Có. Khi hệ thống tài khoản được kết nối đầy đủ,
+          bạn có thể cập nhật những thông tin được cho phép
+          trong phần hồ sơ cá nhân.
+        </div>
+
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== HẾT PHẦN DƯỚI ==================== --><!DOCTYPE html>

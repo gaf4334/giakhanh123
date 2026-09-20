@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Đăng nhập CTV - CTV GIA KHÁNH</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial, "Segoe UI", sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 10% 20%, #c7f9cc, transparent 30%),
+        radial-gradient(circle at 90% 10%, #bde0fe, transparent 30%),
+        radial-gradient(circle at 80% 90%, #ffd6ff, transparent 30%),
+        linear-gradient(135deg,#eefcf2,#f4f7ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:1050px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#fff;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.15);
+}
+
+/* BÊN TRÁI */
+.left{
+    padding:50px;
+    background:linear-gradient(145deg,#6a11cb,#2575fc);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    border-radius:22px;
+    object-fit:cover;
+    background:#fff;
+    padding:5px;
+    margin-bottom:25px;
+}
+
+.left h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.left p{
+    font-size:17px;
+    line-height:1.7;
+    opacity:.95;
+}
+
+.features{
+    margin-top:30px;
+    display:grid;
+    gap:15px;
+}
+
+.feature{
+    background:rgba(255,255,255,.16);
+    padding:15px 18px;
+    border-radius:15px;
+}
+
+/* BÊN PHẢI */
+.right{
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.right h2{
+    font-size:32px;
+    color:#222;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#777;
+    margin-bottom:28px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:8px;
+    color:#333;
+}
+
+.form-group input{
+    width:100%;
+    padding:15px;
+    border:2px solid #e5e5e5;
+    border-radius:12px;
+    outline:none;
+    font-size:15px;
+}
+
+.form-group input:focus{
+    border-color:#2575fc;
+    box-shadow:0 0 0 4px rgba(37,117,252,.1);
+}
+
+.login-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:13px;
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(37,117,252,.25);
+}
+
+.message{
+    display:none;
+    margin-top:18px;
+    padding:14px;
+    border-radius:12px;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.register{
+    text-align:center;
+    margin-top:22px;
+    color:#666;
+}
+
+.register a{
+    color:#2575fc;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.back{
+    text-align:center;
+    margin-top:15px;
+}
+
+.back a{
+    color:#777;
+    text-decoration:none;
+}
+
+/* ĐIỆN THOẠI */
+@media(max-width:800px){
+
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    .left{
+        padding:35px;
+    }
+
+    .left h1{
+        font-size:32px;
+    }
+
+    .right{
+        padding:35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- BÊN TRÁI -->
+    <div class="left">
+
+        <img src="logo.jpg" class="logo" alt="Logo">
+
+        <h1>CTV GIA KHÁNH</h1>
+
+        <p>
+            Đăng nhập tài khoản CTV để quản lý hoạt động,
+            theo dõi sản phẩm và thông tin tài khoản của bạn.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+                🔐 Tài khoản riêng cho từng CTV
+            </div>
+
+            <div class="feature">
+                📚 Quản lý sản phẩm và hoạt động
+            </div>
+
+            <div class="feature">
+                💰 Theo dõi hoa hồng
+            </div>
+
+            <div class="feature">
+                🚀 Làm việc cùng Team GIA KHÁNH
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BÊN PHẢI -->
+    <div class="right">
+
+        <h2>Đăng nhập</h2>
+
+        <p class="subtitle">
+            Đăng nhập vào tài khoản CTV của bạn
+        </p>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label>Tên đăng nhập</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Nhập tên đăng nhập"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Mật khẩu</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Nhập mật khẩu"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                🔐 Đăng nhập
+            </button>
+
+        </form>
+
+
+        <div id="message" class="message"></div>
+
+
+        <div class="register">
+
+            Chưa có tài khoản?
+
+            <a href="ctv-register.html">
+                Đăng ký CTV
+            </a>
+
+        </div>
+
+
+        <div class="back">
+
+            <a href="index.html">
+                ← Quay về trang chủ
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const loginForm = document.getElementById("loginForm");
+const message = document.getElementById("message");
+
+
+loginForm.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const username =
+        document.getElementById("username").value.trim().toLowerCase();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    /* LẤY DANH SÁCH TÀI KHOẢN */
+
+    const accounts =
+        JSON.parse(
+            localStorage.getItem("ctv_accounts")
+        ) || [];
+
+
+    /* TÌM TÀI KHOẢN */
+
+    const account = accounts.find(function(acc){
+
+        return String(acc.username).trim().toLowerCase() === username &&
+               String(acc.password) === password;
+
+    });
+
+
+    /* SAI TÀI KHOẢN HOẶC MẬT KHẨU */
+
+    if(!account){
+
+        message.style.display = "block";
+
+        message.style.background = "#ffe5e5";
+        message.style.color = "#c62828";
+
+        message.innerHTML =
+            "❌ Tên đăng nhập hoặc mật khẩu không đúng.";
+
+        return;
+    }
+
+
+    /* ĐĂNG NHẬP THÀNH CÔNG */
+
+    sessionStorage.setItem(
+        "ctvLoggedIn",
+        "true"
+    );
+
+    sessionStorage.setItem(
+        "ctvUsername",
+        account.username
+    );
+
+    sessionStorage.setItem(
+        "ctvFullname",
+        account.fullname || ""
+    );
+
+    sessionStorage.setItem(
+        "ctvEmail",
+        account.email || ""
+    );
+
+
+    message.style.display = "block";
+
+    message.style.background = "#dcfce7";
+    message.style.color = "#166534";
+
+    message.innerHTML =
+        "✅ Đăng nhập thành công! Đang chuyển vào trang CTV...";
+
+
+    /* CHUYỂN VÀO TRANG CTV */
+
+    setTimeout(function(){
+
+        window.location.href = "ctv-dashboard.html";
+
+    },700);
+
+});
+
+</script>
+
+</body>
+</html>

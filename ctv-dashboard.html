@@ -1,0 +1,1565 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CTV GIA KHÁNH</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    color:#101828;
+}
+
+.app{
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:245px;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    background:#fff;
+    border-right:1px solid #e5e7ef;
+    padding:20px 14px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:5px 8px 25px;
+}
+
+.logo{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.brand b{
+    display:block;
+}
+
+.brand span{
+    color:#00a884;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.menu-title{
+    font-size:10px;
+    color:#98a2b3;
+    font-weight:bold;
+    padding:10px;
+}
+
+.nav{
+    display:block;
+    padding:13px;
+    border-radius:12px;
+    margin:4px 0;
+    text-decoration:none;
+    color:#344054;
+    font-weight:bold;
+}
+
+.nav:hover,
+.nav.active{
+    background:#eeeaff;
+    color:#5137f5;
+}
+
+/* ACCOUNT GẦN ĐĂNG XUẤT */
+.account{
+    position:absolute;
+    bottom:20px;
+    left:14px;
+    right:14px;
+    padding:13px;
+    border:1px solid #e5e7ef;
+    border-radius:15px;
+    background:#fff;
+}
+
+.account-user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.account-avatar{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #00a884;
+    background:#e8faf5;
+}
+
+.account-info{
+    min-width:0;
+}
+
+.account-info b{
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:130px;
+}
+
+.account-info small{
+    color:#667085;
+}
+
+.logout{
+    margin-top:10px;
+    border:0;
+    background:none;
+    color:#d92d20;
+    font-weight:bold;
+    cursor:pointer;
+    padding:0;
+}
+
+/* MAIN */
+.main{
+    margin-left:245px;
+    width:calc(100% - 245px);
+}
+
+.topbar{
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid #e5e7ef;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+}
+
+.content{
+    padding:25px;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* NOTICE */
+.notice{
+    background:#202a43;
+    color:#fff;
+    padding:17px 20px;
+    border-radius:17px;
+    margin-bottom:24px;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(
+        120deg,
+        #efedff,
+        #fff,
+        #e6faf4
+    );
+    border:1px solid #d8d5ff;
+    border-radius:25px;
+    padding:28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 12px 30px rgba(30,30,80,.08);
+}
+
+.hero h1{
+    margin:8px 0;
+    font-size:28px;
+}
+
+.badge{
+    background:#e5faf3;
+    color:#00866f;
+    padding:9px 13px;
+    border-radius:50px;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.money{
+    font-size:30px;
+    color:#00a884;
+    font-weight:bold;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:17px;
+    margin:20px 0;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e5e7ef;
+    border-radius:20px;
+    padding:21px;
+    box-shadow:0 7px 20px rgba(20,30,60,.04);
+}
+
+.card small{
+    color:#667085;
+    display:block;
+    margin-bottom:10px;
+}
+
+.card strong{
+    font-size:28px;
+}
+
+.purple{
+    color:#5137f5;
+}
+
+.green{
+    color:#00a884;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:20px;
+}
+
+.title{
+    font-size:19px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+/* PRODUCT */
+.product{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:13px;
+    border:1px solid #edf0f5;
+    border-radius:14px;
+    margin-bottom:10px;
+}
+
+.product-img{
+    width:55px;
+    height:55px;
+    background:#eeeaff;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-size:24px;
+}
+
+.product-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.product b{
+    display:block;
+}
+
+.product span{
+    color:#667085;
+    font-size:12px;
+}
+
+/* PROFILE */
+.profile-row{
+    display:flex;
+    justify-content:space-between;
+    padding:13px 0;
+    border-bottom:1px solid #eef0f5;
+    gap:15px;
+}
+
+.profile-row span{
+    color:#667085;
+}
+
+.profile-label{
+    display:block;
+    margin:14px 0 7px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.profile-input{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #dfe3ec;
+    border-radius:13px;
+    outline:none;
+    background:#fff;
+}
+
+.profile-input:focus{
+    border-color:#00a884;
+}
+
+/* UPLOAD */
+.image-upload-box{
+    width:100%;
+    margin-top:5px;
+    padding:10px;
+    border-radius:20px;
+    background:#f5fbf9;
+}
+
+.image-upload-box input[type=file]{
+    display:none;
+}
+
+.image-upload-label{
+    width:100%;
+    min-height:210px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    border:2px dashed #00a88b;
+    border-radius:18px;
+
+    background:#e8faf5;
+    color:#008f78;
+
+    font-size:18px;
+    font-weight:800;
+
+    cursor:pointer;
+    text-align:center;
+
+    transition:.2s;
+}
+
+.image-upload-label:hover{
+    background:#d9f5ee;
+    border-color:#008f78;
+    transform:translateY(-2px);
+}
+
+.image-upload-text{
+    font-size:19px;
+}
+
+.image-upload-text small{
+    display:block;
+    margin-top:7px;
+    color:#667085;
+    font-size:13px;
+    font-weight:600;
+}
+
+.image-help{
+    font-size:12px;
+    color:#667085;
+    margin-top:9px;
+    text-align:center;
+}
+
+.avatar-preview{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:14px auto 0;
+    border:3px solid #00a88b;
+    display:none;
+}
+
+.bank-preview{
+    width:100%;
+    max-height:220px;
+    object-fit:contain;
+    margin-top:14px;
+    border-radius:14px;
+    border:1px solid #bdeee2;
+    display:none;
+}
+
+.save-btn{
+    width:100%;
+    margin-top:20px;
+    padding:13px;
+    border:0;
+    border-radius:13px;
+    background:#00a884;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.save-btn:hover{
+    background:#008f78;
+}
+
+.save-message{
+    display:none;
+    margin-top:12px;
+    padding:12px;
+    border-radius:12px;
+    background:#e9faf5;
+    color:#00866f;
+    font-weight:bold;
+    text-align:center;
+    font-size:13px;
+}
+
+.link-box{
+    margin-top:10px;
+    padding:12px;
+    border-radius:12px;
+    background:#f7f8fc;
+    word-break:break-all;
+    font-size:12px;
+}
+
+.copy{
+    border:0;
+    background:#5137f5;
+    color:#fff;
+    padding:9px 13px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:8px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .sidebar{
+        width:75px;
+    }
+
+    .brand b,
+    .brand span,
+    .menu-title,
+    .nav span{
+        display:none;
+    }
+
+    .nav{
+        text-align:center;
+    }
+
+    .main{
+        margin-left:75px;
+        width:calc(100% - 75px);
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        display:block;
+    }
+
+    .topbar{
+        padding:0 15px;
+    }
+
+    .content{
+        padding:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <!-- Logo hệ thống vẫn giữ ở trên -->
+    <div class="brand">
+
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+
+        <div>
+            <b>CTV GIA KHÁNH</b>
+            <span>HỆ THỐNG CTV</span>
+        </div>
+
+    </div>
+
+    <div class="menu-title">
+        MAIN MENU
+    </div>
+
+    <a class="nav active" href="ctv-dashboard.html">
+        🏠 <span>Tổng quan</span>
+    </a>
+
+    <a class="nav" href="#products">
+        🎓 <span>Danh sách Khóa học</span>
+    </a>
+
+    <a class="nav" href="#products">
+        📚 <span>Kho Tài liệu</span>
+    </a>
+
+    <a class="nav" href="#leads">
+        👥 <span>Học viên (Lead)</span>
+    </a>
+
+    <a class="nav" href="#commission">
+        💰 <span>Học phí & Hoa hồng</span>
+    </a>
+
+    <a class="nav" href="#tasks">
+        🎯 <span>Nhiệm vụ</span>
+    </a>
+
+    <a class="nav" href="#account">
+        ⚙️ <span>Tài khoản</span>
+    </a>
+
+
+    <!--
+        ĐÂY LÀ PHẦN ANH ĐANG MUỐN:
+        AVATAR CTV NẰM GẦN NÚT ĐĂNG XUẤT
+    -->
+    <div class="account">
+
+        <div class="account-user">
+
+            <img
+                id="sideAvatar"
+                class="account-avatar"
+                src="logo.jpg"
+                alt="Avatar CTV"
+            >
+
+            <div class="account-info">
+
+                <b id="sideName">
+                    CTV
+                </b>
+
+                <small>
+                    CTV
+                </small>
+
+            </div>
+
+        </div>
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            ↪ Đăng xuất
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+<main class="main">
+
+    <div class="topbar">
+
+        <b>
+            CTV GIA KHÁNH
+            <span style="color:#98a2b3"> / </span>
+            Báo cáo tổng hợp
+        </b>
+
+        <div>
+            👤
+            <b id="topName">CTV</b>
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="notice">
+            📢
+            <b>CHÀO MỪNG BẠN ĐÃ ĐĂNG NHẬP THÀNH CÔNG!</b>
+            &nbsp;
+            Chúc bạn có một hành trình CTV hiệu quả.
+        </div>
+
+
+        <!-- HERO -->
+        <div class="hero">
+
+            <div>
+
+                <span class="badge">
+                    ✓ TÀI KHOẢN ĐÃ ĐƯỢC DUYỆT
+                </span>
+
+                <h1>
+                    Xin chào,
+                    <span id="heroName">CTV</span>
+                    👋
+                </h1>
+
+                <p>
+                    Chào mừng bạn đến với hệ thống quản lý CTV.
+                </p>
+
+            </div>
+
+            <div>
+
+                <small>
+                    VÍ HOA HỒNG
+                </small>
+
+                <div class="money">
+                    0đ
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- THỐNG KÊ -->
+        <div class="cards">
+
+            <div class="card">
+                <small>KHÓA HỌC</small>
+                <strong class="purple" id="courseCount">0</strong>
+            </div>
+
+            <div class="card">
+                <small>LEADS CỦA TÔI</small>
+                <strong>0</strong>
+            </div>
+
+            <div class="card">
+                <small>GIAO DỊCH</small>
+                <strong>0</strong>
+            </div>
+
+            <div class="card">
+                <small>HOA HỒNG ĐÃ DUYỆT</small>
+                <strong class="green">0đ</strong>
+            </div>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- SẢN PHẨM -->
+            <section class="card" id="products">
+
+                <div class="title">
+                    📚 Sản phẩm đang có
+                </div>
+
+                <div id="productList"></div>
+
+            </section>
+
+
+            <!-- TÀI KHOẢN -->
+            <section class="card" id="account">
+
+                <div class="title">
+                    👤 Tài khoản của tôi
+                </div>
+
+
+                <!-- Avatar hồ sơ -->
+                <div style="
+                    display:flex;
+                    align-items:center;
+                    gap:15px;
+                    margin-bottom:20px;
+                ">
+
+                    <img
+                        id="accountAvatar"
+                        src="logo.jpg"
+                        style="
+                            width:75px;
+                            height:75px;
+                            border-radius:50%;
+                            object-fit:cover;
+                            border:3px solid #00a884;
+                        "
+                    >
+
+                    <div>
+
+                        <b id="accountDisplayName">
+                            CTV
+                        </b>
+
+                        <br>
+
+                        <small style="color:#667085;">
+                            CTV
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-row">
+                    <span>Họ tên</span>
+                    <b id="profileName"></b>
+                </div>
+
+                <div class="profile-row">
+                    <span>Username</span>
+                    <b id="profileUsername"></b>
+                </div>
+
+                <div class="profile-row">
+                    <span>Email</span>
+                    <b id="profileEmail"></b>
+                </div>
+
+                <div class="profile-row">
+                    <span>Trạng thái</span>
+                    <b class="green">Đã duyệt</b>
+                </div>
+
+
+                <hr style="
+                    border:0;
+                    border-top:1px solid #eef0f5;
+                    margin:22px 0;
+                ">
+
+
+                <h3>
+                    ✏️ Chỉnh sửa hồ sơ
+                </h3>
+
+
+                <label class="profile-label">
+                    Tên hiển thị
+                </label>
+
+                <input
+                    id="editName"
+                    class="profile-input"
+                    type="text"
+                    placeholder="Nhập tên muốn hiển thị"
+                >
+
+
+                <!-- UPLOAD AVATAR -->
+                <label class="profile-label">
+                    Ảnh đại diện
+                </label>
+
+                <div class="image-upload-box">
+
+                    <label
+                        class="image-upload-label"
+                        for="avatarInput"
+                    >
+
+                        <span class="image-upload-text">
+
+                            Tải ảnh đại diện lên
+
+                            <small>
+                                Nhấn vào đây để chọn ảnh
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                    <input
+                        id="avatarInput"
+                        type="file"
+                        accept="image/*"
+                    >
+
+                    <div class="image-help">
+                        Ảnh không quá 2MB
+                    </div>
+
+                    <img
+                        id="avatarPreview"
+                        class="avatar-preview"
+                    >
+
+                </div>
+
+
+                <!-- NGÂN HÀNG -->
+                <h3 style="margin-top:28px;">
+                    🏦 Tài khoản ngân hàng
+                </h3>
+
+
+                <label class="profile-label">
+                    Tên ngân hàng
+                </label>
+
+                <input
+                    id="bankName"
+                    class="profile-input"
+                    type="text"
+                    placeholder="Ví dụ: Vietcombank"
+                >
+
+
+                <label class="profile-label">
+                    Số tài khoản
+                </label>
+
+                <input
+                    id="bankNumber"
+                    class="profile-input"
+                    type="text"
+                    placeholder="Nhập số tài khoản"
+                >
+
+
+                <label class="profile-label">
+                    Chủ tài khoản
+                </label>
+
+                <input
+                    id="bankOwner"
+                    class="profile-input"
+                    type="text"
+                    placeholder="Tên chủ tài khoản"
+                >
+
+
+                <!-- UPLOAD BANK -->
+                <label class="profile-label">
+                    Ảnh thông tin ngân hàng
+                </label>
+
+                <div class="image-upload-box">
+
+                    <label
+                        class="image-upload-label"
+                        for="bankImageInput"
+                    >
+
+                        <span class="image-upload-text">
+
+                            Tải ảnh ngân hàng lên
+
+                            <small>
+                                Nhấn vào đây để chọn ảnh
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                    <input
+                        id="bankImageInput"
+                        type="file"
+                        accept="image/*"
+                    >
+
+                    <div class="image-help">
+                        Ảnh không quá 2MB
+                    </div>
+
+                    <img
+                        id="bankImagePreview"
+                        class="bank-preview"
+                    >
+
+                </div>
+
+
+                <button
+                    class="save-btn"
+                    onclick="saveProfile()"
+                >
+                    💾 Lưu thông tin
+                </button>
+
+
+                <div
+                    id="saveMessage"
+                    class="save-message"
+                >
+                    ✅ Đã lưu thông tin thành công!
+                </div>
+
+
+                <h3 style="margin-top:30px;">
+                    🔗 Link giới thiệu của bạn
+                </h3>
+
+                <div
+                    class="link-box"
+                    id="refLink"
+                ></div>
+
+                <button
+                    class="copy"
+                    onclick="copyLink()"
+                >
+                    Copy link
+                </button>
+
+            </section>
+
+        </div>
+
+
+        <!-- HOA HỒNG -->
+        <section
+            class="card"
+            id="commission"
+            style="margin-top:20px"
+        >
+
+            <div class="title">
+                💰 Học phí & Hoa hồng
+            </div>
+
+            <p style="color:#667085">
+                Hoa hồng sẽ hiển thị tại đây khi hệ thống ghi nhận giao dịch.
+            </p>
+
+        </section>
+
+
+        <!-- LEAD -->
+        <section
+            class="card"
+            id="leads"
+            style="margin-top:20px"
+        >
+
+            <div class="title">
+                👥 Học viên / Lead
+            </div>
+
+            <p style="color:#667085">
+                Chưa có lead nào.
+            </p>
+
+        </section>
+
+
+        <!-- NHIỆM VỤ -->
+        <section
+            class="card"
+            id="tasks"
+            style="margin-top:20px"
+        >
+
+            <div class="title">
+                🎯 Nhiệm vụ
+            </div>
+
+            <p style="color:#667085">
+                Chưa có nhiệm vụ mới.
+            </p>
+
+        </section>
+
+    </div>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* ==========================
+   KIỂM TRA ĐĂNG NHẬP
+========================== */
+
+if(
+    sessionStorage.getItem("ctvLoggedIn")
+    !== "true"
+){
+    window.location.href = "ctv-login.html";
+}
+
+
+/* ==========================
+   USERNAME
+========================== */
+
+const username =
+    sessionStorage.getItem("ctvUsername") || "";
+
+const email =
+    sessionStorage.getItem("ctvEmail") || "";
+
+
+/* ==========================
+   LẤY ACCOUNT
+========================== */
+
+let accounts =
+    JSON.parse(
+        localStorage.getItem("ctv_accounts") || "[]"
+    );
+
+let account =
+    accounts.find(function(a){
+
+        return String(a.username)
+            .trim()
+            .toLowerCase()
+            ===
+            String(username)
+            .trim()
+            .toLowerCase();
+
+    });
+
+
+if(!account){
+
+    alert("Không tìm thấy tài khoản CTV.");
+
+}
+
+
+/* ==========================
+   TÊN
+========================== */
+
+let fullname =
+    account?.fullname
+    ||
+    sessionStorage.getItem("ctvFullname")
+    ||
+    "CTV";
+
+
+/* ==========================
+   HIỂN THỊ TÊN
+========================== */
+
+document.getElementById("sideName").textContent =
+    fullname;
+
+document.getElementById("topName").textContent =
+    fullname;
+
+document.getElementById("heroName").textContent =
+    fullname;
+
+document.getElementById("profileName").textContent =
+    fullname;
+
+document.getElementById("accountDisplayName").textContent =
+    fullname;
+
+document.getElementById("profileUsername").textContent =
+    username;
+
+document.getElementById("profileEmail").textContent =
+    email;
+
+document.getElementById("editName").value =
+    fullname;
+
+
+/* ==========================
+   NGÂN HÀNG
+========================== */
+
+document.getElementById("bankName").value =
+    account?.bankName || "";
+
+document.getElementById("bankNumber").value =
+    account?.bankNumber || "";
+
+document.getElementById("bankOwner").value =
+    account?.bankOwner || "";
+
+
+/* ==========================
+   AVATAR ĐÃ LƯU
+========================== */
+
+if(account?.avatar){
+
+    document.getElementById("accountAvatar").src =
+        account.avatar;
+
+    document.getElementById("sideAvatar").src =
+        account.avatar;
+
+    document.getElementById("avatarPreview").src =
+        account.avatar;
+
+    document.getElementById("avatarPreview").style.display =
+        "block";
+}
+
+
+/* ==========================
+   BANK IMAGE ĐÃ LƯU
+========================== */
+
+if(account?.bankImage){
+
+    document.getElementById("bankImagePreview").src =
+        account.bankImage;
+
+    document.getElementById("bankImagePreview").style.display =
+        "block";
+}
+
+
+/* ==========================
+   CHỌN AVATAR
+========================== */
+
+document.getElementById("avatarInput")
+.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(!file) return;
+
+
+    if(!file.type.startsWith("image/")){
+
+        alert("Vui lòng chọn file ảnh.");
+
+        this.value = "";
+
+        return;
+    }
+
+
+    if(file.size > 2 * 1024 * 1024){
+
+        alert("Ảnh đại diện không được lớn hơn 2MB.");
+
+        this.value = "";
+
+        return;
+    }
+
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        document.getElementById("avatarPreview").src =
+            e.target.result;
+
+        document.getElementById("avatarPreview").style.display =
+            "block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* ==========================
+   CHỌN ẢNH NGÂN HÀNG
+========================== */
+
+document.getElementById("bankImageInput")
+.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(!file) return;
+
+
+    if(!file.type.startsWith("image/")){
+
+        alert("Vui lòng chọn file ảnh.");
+
+        this.value = "";
+
+        return;
+    }
+
+
+    if(file.size > 2 * 1024 * 1024){
+
+        alert("Ảnh ngân hàng không được lớn hơn 2MB.");
+
+        this.value = "";
+
+        return;
+    }
+
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        document.getElementById("bankImagePreview").src =
+            e.target.result;
+
+        document.getElementById("bankImagePreview").style.display =
+            "block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* ==========================
+   LƯU HỒ SƠ
+========================== */
+
+function saveProfile(){
+
+    if(!account){
+
+        alert("Không tìm thấy tài khoản CTV.");
+
+        return;
+    }
+
+
+    const newName =
+        document.getElementById("editName")
+        .value
+        .trim();
+
+
+    if(!newName){
+
+        alert("Vui lòng nhập tên hiển thị.");
+
+        return;
+    }
+
+
+    account.fullname =
+        newName;
+
+    account.bankName =
+        document.getElementById("bankName").value.trim();
+
+    account.bankNumber =
+        document.getElementById("bankNumber").value.trim();
+
+    account.bankOwner =
+        document.getElementById("bankOwner").value.trim();
+
+
+    /* LƯU AVATAR */
+
+    const avatarPreview =
+        document.getElementById("avatarPreview");
+
+    if(
+        avatarPreview.src &&
+        avatarPreview.style.display !== "none"
+    ){
+
+        account.avatar =
+            avatarPreview.src;
+    }
+
+
+    /* LƯU ẢNH BANK */
+
+    const bankPreview =
+        document.getElementById("bankImagePreview");
+
+    if(
+        bankPreview.src &&
+        bankPreview.style.display !== "none"
+    ){
+
+        account.bankImage =
+            bankPreview.src;
+    }
+
+
+    /* LƯU LOCALSTORAGE */
+
+    localStorage.setItem(
+        "ctv_accounts",
+        JSON.stringify(accounts)
+    );
+
+
+    /* CẬP NHẬT SESSION */
+
+    sessionStorage.setItem(
+        "ctvFullname",
+        newName
+    );
+
+
+    /* CẬP NHẬT TÊN */
+
+    document.getElementById("sideName").textContent =
+        newName;
+
+    document.getElementById("topName").textContent =
+        newName;
+
+    document.getElementById("heroName").textContent =
+        newName;
+
+    document.getElementById("profileName").textContent =
+        newName;
+
+    document.getElementById("accountDisplayName").textContent =
+        newName;
+
+
+    /* CỰC KỲ QUAN TRỌNG:
+       ĐỔI AVATAR Ở GẦN ĐĂNG XUẤT
+    */
+
+    if(account.avatar){
+
+        document.getElementById("sideAvatar").src =
+            account.avatar;
+
+        document.getElementById("accountAvatar").src =
+            account.avatar;
+    }
+
+
+    /* THÔNG BÁO */
+
+    const message =
+        document.getElementById("saveMessage");
+
+    message.style.display = "block";
+
+
+    setTimeout(function(){
+
+        message.style.display = "none";
+
+    },3000);
+
+}
+
+
+/* ==========================
+   SẢN PHẨM
+========================== */
+
+const products =
+    JSON.parse(
+        localStorage.getItem("ctv_products") || "[]"
+    );
+
+
+document.getElementById("courseCount").textContent =
+
+    products.filter(function(p){
+
+        return p.type === "Khóa học";
+
+    }).length;
+
+
+const list =
+    document.getElementById("productList");
+
+
+if(products.length === 0){
+
+    list.innerHTML = `
+        <p style="color:#667085">
+            Admin chưa thêm sản phẩm.
+        </p>
+    `;
+
+}else{
+
+    list.innerHTML =
+
+        products.slice(0,8).map(function(p){
+
+            return `
+
+                <div class="product">
+
+                    <div class="product-img">
+
+                        ${
+                            p.image
+                            ?
+                            `<img src="${escapeHtml(p.image)}">`
+                            :
+                            (
+                                p.type === "Khóa học"
+                                ? "🎓"
+                                : "📚"
+                            )
+                        }
+
+                    </div>
+
+                    <div>
+
+                        <b>
+                            ${escapeHtml(p.name)}
+                        </b>
+
+                        <span>
+
+                            ${escapeHtml(p.type || "")}
+
+                            •
+
+                            ${Number(
+                                p.price || 0
+                            ).toLocaleString("vi-VN")}đ
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* ==========================
+   LINK GIỚI THIỆU
+========================== */
+
+const refLink =
+    location.origin
+    +
+    location.pathname.replace(
+        /ctv-dashboard\.html$/,
+        ""
+    )
+    +
+    "index.html?ref="
+    +
+    encodeURIComponent(username);
+
+
+document.getElementById("refLink").textContent =
+    refLink;
+
+
+/* ==========================
+   COPY LINK
+========================== */
+
+function copyLink(){
+
+    navigator.clipboard.writeText(
+        document.getElementById("refLink").textContent
+    );
+
+    alert("✅ Đã copy link giới thiệu!");
+
+}
+
+
+/* ==========================
+   ĐĂNG XUẤT
+========================== */
+
+function logout(){
+
+    sessionStorage.removeItem("ctvLoggedIn");
+    sessionStorage.removeItem("ctvUsername");
+    sessionStorage.removeItem("ctvFullname");
+    sessionStorage.removeItem("ctvEmail");
+
+    window.location.href =
+        "ctv-login.html";
+
+}
+
+
+/* ==========================
+   ESCAPE HTML
+========================== */
+
+function escapeHtml(text){
+
+    return String(text ?? "")
+        .replace(/[&<>"']/g,function(m){
+
+            return {
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+            }[m];
+
+        });
+
+}
+
+</script>
+
+</body>
+</html>

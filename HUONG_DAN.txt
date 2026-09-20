@@ -1,0 +1,23 @@
+HƯỚNG DẪN ĐỔI TÊN VÀ LOGO
+
+1. Mở file index.html bằng Notepad.
+2. Tìm phần:
+   const CONFIG = {
+3. Đổi:
+   name: "CTV DANIEL"
+   thành tên website của bạn.
+4. Đổi:
+   tagline: "HỆ THỐNG CTV CHUYÊN NGHIỆP"
+   thành dòng chữ nhỏ dưới logo.
+5. Đổi logo:
+   - Đặt ảnh logo (ví dụ logo.png) cùng thư mục với index.html.
+   - Sửa:
+     logo: ""
+     thành:
+     logo: "logo.png"
+6. Lưu lại index.html rồi mở lại bằng Chrome/Firefox.
+
+Bạn cũng có thể đổi tiêu đề lớn ở:
+title: "Gia Tăng Thu Nhập Không Giới Hạn Cùng"
+
+Lưu ý: Đây là giao diện landing page mẫu. Các nút đăng nhập/đăng ký hiện chưa có hệ thống tài khoản thật; có thể nối tiếp với Firebase hoặc backend sau.
